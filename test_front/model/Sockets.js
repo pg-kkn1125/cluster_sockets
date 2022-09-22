@@ -11,6 +11,7 @@ class Sockets {
     box.classList.add("active");
   };
   onmessage = (e) => {
+    console.log(e.data)
     if (e.data instanceof Blob) {
       const reader = new FileReader();
       reader.readAsBinaryString(e.data);
@@ -20,6 +21,7 @@ class Sockets {
         board.innerHTML = reader.result;
       };
     } else {
+      console.log(e.data);
       board.innerHTML = e.data;
     }
   };

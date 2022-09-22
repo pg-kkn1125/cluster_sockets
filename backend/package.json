@@ -7,7 +7,10 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js ecosystem.config.js --env production"
+    "start": "pm2 start ecosystem.config.js ecosystem.config.js --env production",
+    "restart": "pm2 restart ecosystem.config.js ecosystem.config.js --env production",
+    "reload": "pm2 reload ecosystem.config.js ecosystem.config.js --env production",
+    "killall": "pm2 kill"
   },
   "dependencies": {
     "dotenv": "^16.0.2",

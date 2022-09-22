@@ -4,6 +4,8 @@
 
 참조한 링크
 
+[클러스터 개별 동작 팁](https://medium.com/geekculture/scaling-node-js-applicationswith-pm2-clusters-c216c4468d66)
+
 [PM2 Quick Start](https://pm2.keymetrics.io/docs/usage/quick-start/)
 [PM2 Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)
 [PM2 Managing applications states](https://pm2.keymetrics.io/docs/usage/process-management/)

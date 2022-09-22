@@ -6,7 +6,6 @@ module.exports = {
       script: "src/index.js", // 스크립트 파일 위치
       // max_memory_restart: "300M", process memory가 300mb에 도달하면 reload 실행
       instances: 6, // 0 | "max" = CPU 코어 수 만큼 프로세스를 생성
-      increment_var: "PORT",
       exec_mode: "cluster", // 애플리케이션을 클러스터 모드로 실행
       // exec_mode: "cluster", // 애플리케이션을 클러스터 모드로 실행
       wait_ready: true, // 마스터 프로세스에게 ready 이벤트를 기다리라는 의미
@@ -20,6 +19,7 @@ module.exports = {
         // 실행 시 환경 변수 설정
         HOST: "localhost",
         PORT: 3000,
+        THREAD: 0,
       },
       env_production: {
         // 개발 환경별 환경 변수 설정

@@ -3,7 +3,7 @@ import Sockets from "./model/Sockets.js";
 const names = ["receive", "loc01", "loc02", "loc03", "loc04", "chat"];
 const socketMap = {};
 names.forEach((name, idx) => {
-  socketMap[name] = new Sockets(name, 3000 + idx);
+  socketMap[name] = new Sockets(name, 3000);
   socketMap[name].setupSocket();
 });
 
@@ -23,17 +23,17 @@ const handleSendServer = (e) => {
     age: 25,
     gender: 1,
   };
-
   const jsonData = JSON.stringify(data);
   const binaryData = jsonData
     .split("")
     .map((json) => json.charCodeAt(0).toString(2));
   const encoder = new TextEncoder();
   const encodedBinaryData = encoder.encode(binaryData);
-  console.log(encodedBinaryData);
-  console.log(socketMap[names[num - 1]]);
+  // console.log(encodedBinaryData);
+  // console.log(socketMap[names[num - 1]]);
   const socketname = names[num - 1];
-  socketMap[socketname][socketname].send(encodedBinaryData);
+  console.log(num)
+  socketMap[socketname][socketname].send(num - 1);
 };
 
 [btn1, btn2, btn3, btn4, btn5, btn6].forEach((bn) => {
