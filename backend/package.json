@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "ecosystem.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js ecosystem.config.js --env production"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.10.0"
+  },
+  "devDependencies": {}
+}
