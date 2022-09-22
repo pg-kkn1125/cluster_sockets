@@ -57,6 +57,39 @@ uWs
       console.log(`server listening on ws://localhost:${3000}`);
     }
   });
+uWs
+  .App({})
+  .ws(`/uws/*`, {
+    ...options,
+    open: (ws, req) => {
+      if (isDisableKeepAlive) {
+        res.set("Connection", "close");
+      }
+
+      console.log("open success");
+      ws.send("start");
+    },
+    close: (ws, code, message) => {
+      console.log("WebSocket closed");
+    },
+    message: (ws, message, isBinary) => {
+      const data = convertResponseData(message, isBinary);
+      ws.send(data, isBinary);
+    },
+    drain: (ws) => {
+      console.log("WebSocket backpressure: ", ws.getBufferedAmount());
+    },
+  })
+  .get("/uws/receive", (res, req) => {
+    console.log(res, "receive");
+    res.writeStatus(200).writeHEader("test", "yes").end("Hello there!");
+  })
+  .listen(3000, (socket) => {
+    if (socket) {
+      // pm2 send a text as "ready" sign when pm2 reload
+      console.log(`server listening on ws://localhost:${3000}`);
+    }
+  });
 
 process.on("SIGINT", function () {
   isDisableKeepAlive = true;
