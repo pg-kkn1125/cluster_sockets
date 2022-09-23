@@ -7,26 +7,24 @@ class Sockets {
     this[name] = new WebSocket(`ws://localhost:${port}/uws/${name}`);
   }
   onopen = (e) => {
-    console.log(e);
+    console.log("[open]");
     box.classList.add("active");
   };
   onmessage = (e) => {
-    console.log(e.data)
+    console.log(`[${this.socketname} message]`, e);
     if (e.data instanceof Blob) {
       const reader = new FileReader();
       reader.readAsBinaryString(e.data);
       reader.onload = () => {
         // 해석된 데이터 받음
-        console.log(reader.result);
         board.innerHTML = reader.result;
       };
     } else {
-      console.log(e.data);
-      board.innerHTML = e.data;
+      board.innerHTML = "서버에서 받은 메세지 : " + e.data;
     }
   };
   onclose = (e) => {
-    console.log(e);
+    console.log("[close]");
   };
   onerror = (e) => {
     console.log(e);

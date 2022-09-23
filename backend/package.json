@@ -7,13 +7,23 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js ecosystem.config.js --env production",
-    "restart": "pm2 restart ecosystem.config.js ecosystem.config.js --env production",
-    "reload": "pm2 reload ecosystem.config.js ecosystem.config.js --env production",
-    "killall": "pm2 kill"
+    "start": "pm2 start ecosystem.config.js --env production",
+    "restart": "pm2 restart ecosystem.config.js --env production",
+    "reload": "pm2 reload ecosystem.config.js --env production",
+    "stop": "pm2 stop ecosystem.config.js --env production",
+    "refresh": "yarn reload && yarn restart",
+    "log": "pm2 log",
+    "monit": "pm2 monit",
+    "deleteall": "pm2 delete all",
+    "killall": "yarn stop && yarn deleteall && pm2 kill",
+    "flush": "pm2 flush all"
   },
   "dependencies": {
+    "cluster": "^0.7.7",
     "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "os": "^0.1.2",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.10.0"
   },
   "devDependencies": {}
